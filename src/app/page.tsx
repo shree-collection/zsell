@@ -1,69 +1,174 @@
-import Image from "next/image";
+
+import Link from "next/link";
+
+import Hero from "@/components/home/Hero";
+import Services from "@/components/home/Services";
+import HowItWorks from "@/components/home/HowItWorks";
+import AITools from "@/components/home/AITools";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
+import FinalCTA from "@/components/home/FinalCTA";
+
+const platforms = [
+  { name: "Amazon", className: "font-extrabold tracking-tight" },
+  { name: "Flipkart", className: "font-extrabold italic" },
+  { name: "Meesho", className: "font-extrabold" },
+  { name: "JioMart", className: "font-bold" },
+  { name: "Snapdeal", className: "font-bold" },
+];
+
+const sellerTypes = [
+  {
+    icon: "🏪",
+    title: "Small & Local Sellers",
+    description:
+      "Take your local shop online and explore new ways to reach customers.",
+    action: "Explore selling options",
+  },
+  {
+    icon: "📦",
+    title: "Online Sellers",
+    description:
+      "Improve product listings, explore marketplaces, and strengthen your online presence.",
+    action: "Improve your online store",
+  },
+  {
+    icon: "🏭",
+    title: "Wholesalers & Manufacturers",
+    description:
+      "Showcase your products through digital channels and reach more potential buyers.",
+    action: "Explore digital channels",
+  },
+  {
+    icon: "🚀",
+    title: "Growing Brands",
+    description:
+      "Build your brand identity, launch a website, and develop your digital business.",
+    action: "Build your brand",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="w-full overflow-x-clip bg-white text-[#0B1B33]">
+      {/* Hero */}
+      <Hero />
+
+      {/* Marketplace platforms */}
+      <section
+        aria-labelledby="marketplace-heading"
+        className="border-y border-slate-200 bg-[#F7F8FA] px-4 py-7 sm:px-6 sm:py-9 lg:px-8"
+      >
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5 lg:flex-row lg:justify-between lg:gap-8">
+          <div className="text-center lg:text-left">
+            <p
+              id="marketplace-heading"
+              className="text-xs font-extrabold uppercase leading-5 tracking-[0.13em] text-slate-600 sm:tracking-[0.15em]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Where you can sell online
+            </p>
+            <p className="mt-1 text-xs leading-5 text-slate-500">
+              Explore multiple selling channels with ZSell.
+            </p>
+          </div>
+
+          <ul
+            aria-label="Examples of online marketplaces"
+            className="flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-4 sm:gap-x-8 lg:flex-1 lg:gap-x-7"
+          >
+            {platforms.map((platform) => (
+              <li key={platform.name}>
+                <span
+                  className={`whitespace-nowrap text-base text-slate-700 transition-colors duration-200 hover:text-[#FF5A1F] sm:text-xl ${platform.className}`}
+                >
+                  {platform.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-center text-xs text-slate-500 lg:text-right">
+            Plus websites and other channels
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Who we support */}
+      <section
+        id="who-we-support"
+        aria-labelledby="seller-types-heading"
+        className="bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="section-eyebrow">Who we support</p>
+
+            <h2
+              id="seller-types-heading"
+              className="section-title mx-auto"
+            >
+              Every business deserves a chance to grow.
+            </h2>
+
+            <p className="section-description mx-auto">
+              Whether you run a local shop, sell online, manufacture products,
+              or manage a growing brand, ZSell helps you explore your next
+              business opportunity.
+            </p>
+          </div>
+
+          {/* Seller categories */}
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+            {sellerTypes.map((seller, index) => (
+              <article
+                key={seller.title}
+                className="group flex h-full min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-[#FF5A1F]/40 hover:shadow-lg sm:rounded-3xl sm:p-6"
+              >
+                <span
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-2xl transition-transform duration-300 group-hover:scale-105 ${
+                    index % 2 === 0
+                      ? "bg-[#FF5A1F]/10"
+                      : "bg-[#FFD928]/30"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {seller.icon}
+                </span>
+
+                <h3 className="mt-5 text-lg font-extrabold leading-snug text-[#0B1B33]">
+                  {seller.title}
+                </h3>
+
+                <p className="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                  {seller.description}
+                </p>
+
+                <Link
+                  href="/services"
+                  className="mt-5 inline-flex min-h-10 items-center gap-2 self-start text-sm font-bold text-[#E84912] transition-colors hover:text-[#0B1B33] focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] focus-visible:ring-offset-2"
+                >
+                  {seller.action}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </article>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Core services */}
+      <Services />
+
+      {/* How it works */}
+      <HowItWorks />
+
+      {/* AI tools */}
+      <AITools />
+
+      {/* Why choose ZSell */}
+      <WhyChooseUs />
+
+      {/* Final call to action */}
+      <FinalCTA />
     </div>
   );
 }
